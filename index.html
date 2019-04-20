@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>LaxxxJS</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>reLaxxx</h1>
+      <p>Let's build a snowman!</p>
+
+      <div class="section top">
+        <h4 id="stepOne">Step one: wait for snow.</h4>
+        <div id="snow"></div>
+      </div>
+      <div class="section middle">
+        <h4 id="stepTwo">Step two: roll the base.</h4>
+        <div
+          id="ballBig"
+          class="lax"
+          data-lax-translate-x="0 0, 170 230 | speed=0.3331"
+        ></div>
+      </div>
+      <div class="section bottom">
+        <h4 id="stepThree">Step two: roll the body and head.</h4>
+        <div
+          id="ballMed"
+          class="lax"
+          data-lax-translate-x="600 0, 1000 300"
+        ></div>
+        <div id="ballSmall" class="lax"></div>
+      </div>
+    </div>
+    <script src="node_modules/jquery/dist/jquery.min.js" async defer></script>
+    <script src="node_modules/lax.js/lib/lax.min.js" async defer></script>
+    <script>
+      window.onload = function() {
+        lax.setup() // init
+
+        const updateLax = () => {
+          lax.update(window.scrollY)
+          window.requestAnimationFrame(updateLax)
+        }
+
+        window.requestAnimationFrame(updateLax)
+
+        //scroll animations
+        window.onscroll = function(e) {
+          //grow base on scroll
+          if (window.pageYOffset < 550) {
+            document.getElementById('ballBig').style.height =
+              window.pageYOffset * 0.75 + 'px'
+            document.getElementById('ballBig').style.width =
+              window.pageYOffset * 0.75 + 'px'
+          }
+
+          //slide in step two
+          let stepTwo = document.getElementById('stepTwo')
+          if (window.pageYOffset > 300) {
+            stepTwo.style.animation = 'slideInRTL 1.5s ease-in forwards'
+          }
+        }
+
+        //create and distribute snowflakes
+        let snowContainer = document.getElementById('snow')
+        for (let i = 0; i < 300; i++) {
+          let flake = document.createElement('div')
+          flake.innerHTML = '*'
+          flake.className += 'flake'
+          snowContainer.appendChild(flake)
+        }
+
+        let snow = document.getElementsByClassName('flake')
+        for (let i = 0; i < snow.length; i++) {
+          snow[i].style.left = Math.floor(Math.random() * 800) + 'px'
+          snow[i].style.animationDelay = Math.random() * 10 + 's'
+        }
+      }
+    </script>
+  </body>
+</html>

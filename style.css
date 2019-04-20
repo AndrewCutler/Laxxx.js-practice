@@ -1,0 +1,113 @@
+body {
+  height: 800vh;
+  color: rgb(245, 240, 240);
+  background: #3464ce;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.container {
+  margin: auto;
+  z-index: 99;
+  text-align: center;
+}
+
+.section {
+  height: 600px;
+  position: relative;
+  border: 2px solid rgb(68, 68, 68);
+  background: #999cdd;
+}
+
+.top {
+  overflow: hidden;
+}
+
+#stepOne {
+  width: 200px;
+  position: absolute;
+  right: 5%;
+  animation: slideInLTR 1.5s ease-in;
+}
+
+.flake {
+  z-index: 10;
+  position: absolute;
+  top: -20px;
+  animation: snowfallShake 3s ease-in-out infinite,
+    snowfallFall 7s linear infinite;
+}
+
+#stepTwo {
+  width: 200px;
+  left: 100%;
+  position: absolute;
+}
+
+#ballBig {
+  width: 200px;
+  height: 200px;
+  background: rgb(230, 228, 228);
+  border-radius: 50%;
+  bottom: 1px;
+  position: absolute;
+}
+
+#ballMed {
+  width: 120px;
+  height: 120px;
+  background: rgb(230, 228, 228);
+  border-radius: 50%;
+  bottom: 1px;
+  position: absolute;
+}
+
+@keyframes slideInLTR {
+  0% {
+    right: 100%;
+  }
+  86% {
+    right: 5%;
+  }
+  92% {
+    right: 9%;
+  }
+  100% {
+    right: 5%;
+  }
+}
+
+@keyframes slideInRTL {
+  0% {
+    left: 100%;
+  }
+  86% {
+    left: 5%;
+  }
+  92% {
+    left: 9%;
+  }
+  100% {
+    left: 5%;
+  }
+}
+
+@keyframes snowfallShake {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(60px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes snowfallFall {
+  0% {
+    top: 0%;
+  }
+  100% {
+    top: 100%;
+  }
+}
