@@ -18,26 +18,42 @@
       <h1>reLaxxx</h1>
       <p>Let's build a snowman!</p>
 
-      <div class="section top">
+      <div class="section one">
         <h4 id="stepOne">Step one: wait for snow.</h4>
         <div id="snow"></div>
       </div>
-      <div class="section middle">
+      <div class="section two">
         <h4 id="stepTwo">Step two: roll the base.</h4>
         <div
           id="ballBig"
           class="lax"
-          data-lax-translate-x="0 0, 170 230 | speed=0.3331"
+          data-lax-translate-x="0 0, 240 300 | speed=0.3331"
         ></div>
       </div>
-      <div class="section bottom">
-        <h4 id="stepThree">Step two: roll the body and head.</h4>
+      <div class="section three">
+        <h4 id="stepThree">Step three: roll the body and head.</h4>
+        <div
+          id="ballSmall"
+          class="lax"
+          data-lax-translate-x="1100 15, 1250 240"
+        ></div>
         <div
           id="ballMed"
           class="lax"
-          data-lax-translate-x="600 0, 1000 300"
+          data-lax-translate-x="1100 540, 1250 390"
         ></div>
-        <div id="ballSmall" class="lax"></div>
+      </div>
+      <div class="section four">
+        <h4 id="stepFour">Step four: put them together!</h4>
+        <div class="lax snowman head" data-lax-preset="zoomIn"></div>
+        <div class="lax snowman chest" data-lax-preset="zoomIn"></div>
+        <div class="lax snowman body" data-lax-preset="zoomIn"></div>
+      </div>
+      <div class="section five">
+        <h4 id="stepFive">Step five: add accesories.</h4>
+        <div class="snowman head"></div>
+        <div class="snowman chest"></div>
+        <div class="snowman body"></div>
       </div>
     </div>
     <script src="node_modules/jquery/dist/jquery.min.js" async defer></script>
@@ -56,11 +72,23 @@
         //scroll animations
         window.onscroll = function(e) {
           //grow base on scroll
-          if (window.pageYOffset < 550) {
+          if (window.pageYOffset < 700) {
             document.getElementById('ballBig').style.height =
-              window.pageYOffset * 0.75 + 'px'
+              window.pageYOffset * 0.5 + 'px'
             document.getElementById('ballBig').style.width =
-              window.pageYOffset * 0.75 + 'px'
+              window.pageYOffset * 0.5 + 'px'
+          }
+
+          //grow body and head
+          if (window.pageYOffset > 1100 && window.pageYOffset < 1250) {
+            document.getElementById('ballMed').style.height =
+              window.pageYOffset * 0.2 + 'px'
+            document.getElementById('ballMed').style.width =
+              window.pageYOffset * 0.2 + 'px'
+            document.getElementById('ballSmall').style.height =
+              window.pageYOffset * 0.125 + 'px'
+            document.getElementById('ballSmall').style.width =
+              window.pageYOffset * 0.125 + 'px'
           }
 
           //slide in step two
@@ -68,11 +96,21 @@
           if (window.pageYOffset > 300) {
             stepTwo.style.animation = 'slideInRTL 1.5s ease-in forwards'
           }
+          //slide in step three
+          let stepThree = document.getElementById('stepThree')
+          if (window.pageYOffset > 710) {
+            stepThree.style.animation = 'slideInLTR 1.5s ease-in forwards'
+          }
+          //slide in step four
+          let stepFour = document.getElementById('stepFour')
+          if (window.pageYOffset > 1450) {
+            stepFour.style.animation = 'slideInRTL 1.5s ease-in forwards'
+          }
         }
 
         //create and distribute snowflakes
         let snowContainer = document.getElementById('snow')
-        for (let i = 0; i < 300; i++) {
+        for (let i = 0; i < 350; i++) {
           let flake = document.createElement('div')
           flake.innerHTML = '*'
           flake.className += 'flake'
@@ -83,6 +121,7 @@
         for (let i = 0; i < snow.length; i++) {
           snow[i].style.left = Math.floor(Math.random() * 800) + 'px'
           snow[i].style.animationDelay = Math.random() * 10 + 's'
+          snow[i].style.opacity = Math.random() + 0.3
         }
       }
     </script>

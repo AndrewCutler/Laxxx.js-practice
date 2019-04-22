@@ -18,7 +18,7 @@ body {
   background: #999cdd;
 }
 
-.top {
+.one {
   overflow: hidden;
 }
 
@@ -37,6 +37,10 @@ body {
     snowfallFall 7s linear infinite;
 }
 
+.two {
+  border-bottom: 22px solid rgb(230, 228, 228);
+}
+
 #stepTwo {
   width: 200px;
   left: 100%;
@@ -44,11 +48,22 @@ body {
 }
 
 #ballBig {
-  width: 200px;
-  height: 200px;
   background: rgb(230, 228, 228);
   border-radius: 50%;
-  bottom: 1px;
+  bottom: 0px;
+  position: absolute;
+}
+
+.three {
+  border-bottom: 22px solid rgb(230, 228, 228);
+}
+
+#ballSmall {
+  width: 75px;
+  height: 75px;
+  background: rgb(230, 228, 228);
+  border-radius: 50%;
+  bottom: 0px;
   position: absolute;
 }
 
@@ -57,8 +72,62 @@ body {
   height: 120px;
   background: rgb(230, 228, 228);
   border-radius: 50%;
-  bottom: 1px;
+  bottom: 0px;
   position: absolute;
+}
+
+#stepThree {
+  width: 200px;
+  position: absolute;
+  left: 100%;
+}
+
+.four {
+  border-bottom: 22px solid rgb(230, 228, 228);
+}
+
+#stepFour {
+  width: 200px;
+  position: absolute;
+  right: 100%;
+}
+
+.four .snowman {
+  border-radius: 47%;
+  background: rgb(230, 228, 228);
+  margin: -5px auto;
+  display: block;
+}
+
+.four .head {
+  margin-top: 55px;
+}
+
+.five {
+  border-bottom: 22px solid rgb(230, 228, 228);
+}
+
+.five .snowman {
+  border-radius: 47%;
+  background: rgb(230, 228, 228);
+  margin: 0 auto -5px auto;
+  display: block;
+}
+
+.head {
+  /* margin-top: -3px; */
+  width: 100px;
+  height: 100px;
+}
+
+.chest {
+  width: 180px;
+  height: 180px;
+}
+
+.body {
+  width: 280px;
+  height: 280px;
 }
 
 @keyframes slideInLTR {
